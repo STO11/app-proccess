@@ -3,9 +3,11 @@ import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Routes} from './routes';
 import {Tabs} from './tabs';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import IconAttach from 'react-native-vector-icons/Ionicons';
 import {TouchableHighlight} from 'react-native';
 import {colors} from '../styles/colors';
+import {Tabs2} from './tabsDetails';
 
 const Stack = createStackNavigator<Record<string, object | undefined>>();
 
@@ -15,8 +17,18 @@ export interface Props {
 }
 
 const Left = ({onPress}: any) => (
-    <TouchableHighlight onPress={onPress}>
-        <Icon name={'long-arrow-left'} size={30} color={colors.primaryColor} />
+    <TouchableHighlight onPress={onPress} style={{paddingLeft: 20}}>
+        <Icon
+            name={'keyboard-backspace'}
+            size={25}
+            color={colors.primaryColor}
+        />
+    </TouchableHighlight>
+);
+
+const Attach = ({onPress}: any) => (
+    <TouchableHighlight onPress={onPress} style={{paddingRight: 20}}>
+        <IconAttach name={'attach'} size={30} color={colors.primaryColor} />
     </TouchableHighlight>
 );
 
@@ -30,17 +42,15 @@ export const Navigation: React.FC<Props> = ({navigation}) => {
                     headerBackImage: () => (
                         <Left onPress={() => navigation.back()} />
                     ),
+                    headerTitleAlign: 'left',
+                    headerRight: () => <Attach />,
                 }}>
                 <Stack.Screen
                     name={Routes.LOGIN.name}
                     component={Routes.LOGIN.screen}
                     options={Routes.LOGIN.options}
                 />
-                <Stack.Screen
-                    name={Routes.DETAILS.name}
-                    component={Routes.DETAILS.screen}
-                    options={Routes.DETAILS.options}
-                />
+                <Stack.Screen name={Routes.TABS2.name} component={Tabs2} />
                 <Stack.Screen
                     options={{headerShown: false}}
                     name={Routes.TABS.name}

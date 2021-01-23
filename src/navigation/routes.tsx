@@ -10,7 +10,7 @@ export const Routes = {
         options: {
             title: 'Login Page',
             headerStyle: {},
-            headerTintColor: 'white',
+            // headerTintColor: 'white',
             headerShown: false,
         },
     },
@@ -21,17 +21,20 @@ export const Routes = {
         options: {
             title: 'PROCESSOS',
             headerStyle: {},
-            headerTintColor: 'white',
+            // headerTintColor: 'white',
         },
     },
     DETAILS: {
         screen: detailsScreen,
         name: 'Details',
-        title: 'Details Page',
+        title: 'PROCESSOS',
         options: {
-            title: 'Details Page',
+            title: 'PROCESSOS',
             headerStyle: {},
-            headerTintColor: 'white',
+
+            // headerTintColor: 'white',
+            //headerShown: true,
+            //tabBarVisible: false,
         },
     },
     PROFILE: {
@@ -41,8 +44,10 @@ export const Routes = {
         options: {
             title: 'PERFIL',
             headerStyle: {},
-            headerTintColor: 'white',
+            headerShown: false,
+            // headerTintColor: 'white',
         },
     },
-    TABS: {screen: null, name: ' '},
+    TABS: {screen: null, name: 'Tabs'},
+    TABS2: {screen: null, name: 'PROCESSO'},
 };

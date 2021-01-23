@@ -1,13 +1,22 @@
 import React from 'react';
-import {View, Text} from 'react-native';
+import ButtonComponent from '../../components/buttonComponent';
+import {PaddingBottomArea} from '../../styles/general';
+import {Container, TextTitle} from '../../styles/profile';
 
 // import { Container } from './styles';
 
-const profileScreen: React.FC = () => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const profileScreen: React.FC = ({navigation}: any) => {
     return (
-        <View>
-            <Text>Perfil</Text>
-        </View>
+        <Container>
+            <TextTitle fontSizeText={40}>Usuário</TextTitle>
+            <PaddingBottomArea padding={10} />
+            <TextTitle fontSizeText={20}>
+                candidato_mobile@aurum.com.br
+            </TextTitle>
+            <PaddingBottomArea padding={50} />
+            <ButtonComponent children={'SAIR'} onPress={() => null} />
+        </Container>
     );
 };
 

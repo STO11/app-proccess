@@ -7,14 +7,14 @@ import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityI
 
 import {Routes} from './routes';
 //
-// ─── FOR TABBAR SETTINGS AND STYLES ─────────────────────────────────────────────
-//
-const Tab = createBottomTabNavigator<Record<string, object | undefined>>();
-export const Tabs = () => {
+const Tab2 = createBottomTabNavigator<Record<string, object | undefined>>();
+
+export const Tabs2 = ({navigation}: any) => {
     return (
-        <Tab.Navigator
+        <Tab2.Navigator
             initialRouteName={Routes.HOME.name}
             //Config for option tabbar and style
+
             tabBarOptions={{
                 showLabel: true,
                 style: {
@@ -41,21 +41,18 @@ export const Tabs = () => {
                 tabBarIcon: ({color, size}) => {
                     let iconName;
                     switch (route.name) {
-                        case 'Home':
+                        case 'Details':
                             iconName = 'folder';
                             break;
                         case 'Profile':
                             iconName = 'account-outline';
                             break;
-                        case 'Details':
-                            iconName = 'details';
-                            break;
                         default:
-                            iconName = 'circle';
+                            iconName = 'folder';
                             break;
                     }
 
-                    return route.name === 'Home' ? (
+                    return route.name === 'Details' ? (
                         <IconFeather
                             name={iconName}
                             size={size}
@@ -71,16 +68,34 @@ export const Tabs = () => {
                 },
             })}>
             {/* Screen for tabs route */}
-            <Tab.Screen
-                name={Routes.HOME.name}
-                component={Routes.HOME.screen}
-                options={Routes.HOME.options}
+            <Tab2.Screen
+                name={Routes.DETAILS.name}
+                component={Routes.DETAILS.screen}
+                options={Routes.DETAILS.options}
+                listeners={{
+                    tabPress: (e) => {
+                        // Prevent default action
+                        e.preventDefault();
+                        //add header
+                        navigation.setOptions({headerShown: true});
+                        navigation.navigate(Routes.DETAILS.name);
+                    },
+                }}
             />
-            <Tab.Screen
+            <Tab2.Screen
                 name={Routes.PROFILE.name}
                 component={Routes.PROFILE.screen}
                 options={Routes.PROFILE.options}
+                listeners={{
+                    tabPress: (e) => {
+                        // Prevent default action
+                        e.preventDefault();
+                        navigation.navigate(Routes.PROFILE.name);
+                        //remove header
+                        navigation.setOptions({headerShown: false});
+                    },
+                }}
             />
-        </Tab.Navigator>
+        </Tab2.Navigator>
     );
 };

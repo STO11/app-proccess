@@ -25,12 +25,14 @@ export const Button = styled.TouchableOpacity`
 
 export const ButtonText = styled.Text`
     color: white;
+    font-weight: bold;
+    font-size: 20px;
 `;
 
 //
 // ─── ITEMS COMPONENT LIST PROCCESS FIRST PAGE TAB ───────────────────────────────
 //
-export const ItemList = styled.View`
+export const ItemList = styled.TouchableOpacity`
     background-color: white;
 `;
 export const ItemListTextTitle = styled.Text<PropItemListText>`

@@ -2,12 +2,10 @@ import styled from 'styled-components/native';
 import {Props} from '../../screens/details/DetailsScreen';
 
 export const Container = styled.View`
-    background-color: white;
-    padding-right: 30px;
-    padding-left: 30px;
-    padding-top: 30px;
-    padding-bottom: 3px;
     flex: 1;
+    justify-content: center;
+    padding: 30px;
+    background-colot white;
 `;
 
 export const TextTitle = styled.Text<Props>`

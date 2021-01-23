@@ -7,6 +7,7 @@ import {colors} from '../../styles/colors';
 import ItemsListComponent from '../../components/itemsListComponent';
 import {ItemList, PaddingBottomArea} from '../../styles/general';
 import {ScrollView} from 'react-native';
+import {Routes} from '../../navigation/routes';
 //import {Text} from 'react-native';
 
 export interface Props {
@@ -16,7 +17,7 @@ export interface Props {
 //
 // ─── SCREEN HOME RENDER ─────────────────────────────────────────────────────────
 //
-const homeScreen: React.FC<Props> = ({Props}: any) => {
+const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
     return (
         <Container>
             <TitleView>
@@ -38,6 +39,9 @@ const homeScreen: React.FC<Props> = ({Props}: any) => {
                         fontSizeText={20}
                         color={'black'}
                         fontWeight={'400'}
+                        onPress={() => {
+                            navigation.navigate(Routes.TABS2.name);
+                        }}
                     />
                     <PaddingBottomArea padding={5} />
                     <ItemsListComponent
