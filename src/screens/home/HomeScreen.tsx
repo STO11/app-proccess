@@ -5,6 +5,9 @@ import {SafeAreaView, Text} from 'react-native';
 interface props {
     name: String;
 }
+//
+// ─── SCREEN HOME RENDER ─────────────────────────────────────────────────────────
+//
 
 const homeScreen: React.FC = () => {
     return (
