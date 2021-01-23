@@ -41,7 +41,11 @@ export const Navigation: React.FC<Props> = ({navigation}) => {
                     component={Routes.DETAILS.screen}
                     options={Routes.DETAILS.options}
                 />
-                <Stack.Screen name={Routes.TABS.name} component={Tabs} />
+                <Stack.Screen
+                    options={{headerShown: false}}
+                    name={Routes.TABS.name}
+                    component={Tabs}
+                />
             </Stack.Navigator>
         </NavigationContainer>
     );

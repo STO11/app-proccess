@@ -23,15 +23,3 @@ export const TextLogin = styled.Text`
     font-family: Roboto-Light;
     padding-bottom: 50px;
 `;
-
-//
-// ─── PADDIN BOTTOM AREA SCREEN LOGIN ────────────────────────────────────────────
-//
-
-interface propPaddingBottomArea {
-    padding: number;
-}
-
-export const PaddingBottomArea = styled.View<propPaddingBottomArea>`
-    padding-bottom: ${(props) => props.padding}px;
-`;

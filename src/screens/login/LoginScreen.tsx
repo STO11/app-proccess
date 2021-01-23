@@ -1,10 +1,12 @@
 import React from 'react';
 //import {Text, TouchableOpacity} from 'react-native';
 //import {Routes} from '../../navigation/routes';
-import {Container, PaddingBottomArea, TextLogin} from '../../styles/login';
+import {Container, TextLogin} from '../../styles/login';
 import {NavigationProp} from '@react-navigation/native';
-import InputComponent from '../../components/inputComponents';
-import ButtonComponent from '../../components/buttonComponents';
+import InputComponent from '../../components/inputComponent';
+import ButtonComponent from '../../components/buttonComponent';
+import {Routes} from '../../navigation/routes';
+import {PaddingBottomArea} from '../../styles/general';
 //
 // ─── SCREEN LOGIN RENDER ────────────────────────────────────────────────────────
 //
@@ -15,10 +17,10 @@ export interface Props
     navigation: any;
 }
 
-const loginScreen: React.FC<Props> = ({}) => {
-    // function goTo() {
-    //     navigation.replace(Routes.TABS.name);
-    // }
+const loginScreen: React.FC<Props> = ({navigation}) => {
+    function goTo() {
+        navigation.replace(Routes.TABS.name);
+    }
     return (
         <>
             <Container>
@@ -27,7 +29,7 @@ const loginScreen: React.FC<Props> = ({}) => {
                 <PaddingBottomArea padding={10} />
                 <InputComponent placeholder="Senha" bgColor={'white'} />
                 <PaddingBottomArea padding={20} />
-                <ButtonComponent children="ENTRAR" />
+                <ButtonComponent children="ENTRAR" onPress={() => goTo()} />
             </Container>
         </>
     );
