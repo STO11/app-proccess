@@ -1,10 +1,2 @@
-import {API_URL} from 'react-native-dotenv';
-
-const colors = {
-    primaryColor: '#11A8F3',
-    textColor: '#495057',
-};
-
-const url = API_URL;
-
-export {colors, url};
+import {API_URL, API_TOKEN} from 'react-native-dotenv';
+export {API_URL, API_TOKEN};
