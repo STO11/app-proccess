@@ -1,7 +1,7 @@
 import detailsScreen from '../screens/details/DetailsScreen';
 import homeScreen from '../screens/home/HomeScreen';
 import loginScreen from '../screens/login/LoginScreen';
-import profileScreen from '../screens/Profile/ProfileScreen';
+import profileScreen from '../screens/profile/ProfileScreen';
 
 export const Routes = {
     LOGIN: {
@@ -19,7 +19,7 @@ export const Routes = {
         name: 'Home',
         title: 'Home Page',
         options: {
-            title: 'Home Page',
+            title: 'PROCESSOS',
             headerStyle: {},
             headerTintColor: 'white',
         },
@@ -39,10 +39,10 @@ export const Routes = {
         name: 'Profile',
         title: 'Perfil',
         options: {
-            title: 'Details Page',
+            title: 'PERFIL',
             headerStyle: {},
             headerTintColor: 'white',
         },
     },
-    TABS: {screen: null, name: 'Tabs'},
+    TABS: {screen: null, name: ' '},
 };
