@@ -2,6 +2,7 @@ import styled from 'styled-components/native';
 import {colors} from '../styles/colors';
 import {Props} from '../components/inputComponent';
 import {Props as PropItemListText} from '../components/itemsListComponent';
+import {Props as PropButton} from '../components/buttonComponent';
 
 export const InputText = styled.TextInput<Props>`
     height: 50px;
@@ -14,19 +15,20 @@ export const InputText = styled.TextInput<Props>`
     background-color: ${(props) => props.bgColor};
 `;
 
-export const Button = styled.TouchableOpacity`
-    height: 50px;
-    width: 100%;
+export const Button = styled.TouchableOpacity<PropButton>`
     background-color: ${colors.primaryColor};
     border-radius: 8px;
     align-items: center;
     justify-content: center;
+    width: ${(props) => props.width}
+    height: ${(props) => props.height}
 `;
 
-export const ButtonText = styled.Text`
+export const ButtonText = styled.Text<PropButton>`
     color: white;
     font-weight: bold;
-    font-size: 20px;
+    font-size: ${(props) => props.fontsize}px;
+    padding: ${(props) => props.paddingArea};
 `;
 
 //

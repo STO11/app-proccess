@@ -29,7 +29,14 @@ const loginScreen: React.FC<Props> = ({navigation}) => {
                 <PaddingBottomArea padding={10} />
                 <InputComponent placeholder="Senha" bgColor={'white'} />
                 <PaddingBottomArea padding={20} />
-                <ButtonComponent children="ENTRAR" onPress={() => goTo()} />
+                <ButtonComponent
+                    width="100%"
+                    height="50px"
+                    children="ENTRAR"
+                    paddingArea="0px"
+                    fontsize={20}
+                    onPress={() => goTo()}
+                />
             </Container>
         </>
     );

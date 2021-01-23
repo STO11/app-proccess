@@ -3,10 +3,10 @@ import {Props} from '../../screens/home/HomeScreen';
 
 export const Container = styled.View`
     background-color: white;
-    padding-right: 30px;
-    padding-left: 30px;
+    padding-right: 20px;
+    padding-left: 20px;
     padding-top: 30px;
-    padding-bottom: 3px;
+    padding-bottom: 5px;
     flex: 1;
 `;
 

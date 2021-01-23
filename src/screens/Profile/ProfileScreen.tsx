@@ -15,7 +15,14 @@ const profileScreen: React.FC = ({navigation}: any) => {
                 candidato_mobile@aurum.com.br
             </TextTitle>
             <PaddingBottomArea padding={50} />
-            <ButtonComponent children={'SAIR'} onPress={() => null} />
+            <ButtonComponent
+                width={'100%'}
+                height={'50px'}
+                fontsize={20}
+                children={'SAIR'}
+                paddingArea="0px"
+                onPress={() => null}
+            />
         </Container>
     );
 };

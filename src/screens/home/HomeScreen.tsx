@@ -217,6 +217,7 @@ const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
                         fontWeight={'300'}
                     />
                 </ItemList>
+                <PaddingBottomArea padding={40} />
             </ScrollView>
         </Container>
     );
