@@ -1,10 +1,17 @@
 import React from 'react';
-import {View} from 'react-native';
+import {TouchableOpacityProps} from 'react-native';
+import {Button, ButtonText} from '../styles/general';
 
-// import { Container } from './styles';
+export interface Props extends TouchableOpacityProps {
+    children: string;
+}
 
-const components: React.FC = () => {
-    return <View />;
+const ButtonComponent: React.FC<Props> = ({Props, children}: any) => {
+    return (
+        <Button {...Props}>
+            <ButtonText>{children}</ButtonText>
+        </Button>
+    );
 };
 
-export default components;
+export default ButtonComponent;

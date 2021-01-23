@@ -3,4 +3,5 @@ export const colors = {
     textColor: '#495057',
     backgroundColor: 'white',
     backgroundTabColor: '#495057',
+    inputBorder: '#D6DADE',
 };
