@@ -2,7 +2,8 @@ import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import {Platform} from 'react-native';
 import {colors} from '../styles/colors';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import IconFeather from 'react-native-vector-icons/Feather';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import {Routes} from './routes';
 //
 // ─── FOR TABBAR SETTINGS AND STYLES ─────────────────────────────────────────────
@@ -19,6 +20,7 @@ export const Tabs = () => {
                     backgroundColor: colors.backgroundTabColor,
                 },
                 activeTintColor: colors.primaryColor,
+                inactiveTintColor: colors.backgroundColor,
                 tabStyle: {
                     marginTop: Platform.OS === 'ios' ? 0 : 0,
                     //height: 40,
@@ -42,13 +44,25 @@ export const Tabs = () => {
                             iconName = 'folder';
                             break;
                         case 'Profile':
-                            iconName = 'user';
+                            iconName = 'account-outline';
                             break;
                         default:
                             iconName = 'circle';
                             break;
                     }
-                    return <Icon name={iconName} size={size} color={color} />;
+                    return route.name === 'Home' ? (
+                        <IconFeather
+                            name={iconName}
+                            size={size}
+                            color={color}
+                        />
+                    ) : (
+                        <MaterialCommunityIcons
+                            name={iconName}
+                            size={size}
+                            color={color}
+                        />
+                    );
                 },
             })}>
             {/* Screen for tabs route */}
