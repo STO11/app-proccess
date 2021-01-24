@@ -2,17 +2,16 @@
 import React from 'react';
 import ButtonComponent from '../../components/buttonComponent';
 import ItemsListComponent from '../../components/itemsListComponent';
-import {
-    ButtonOrderBy,
-    Container,
-    TextButtonOrderBy,
-    ViewAnexo,
-    ViewHeaderHistory,
-} from '../../styles/details';
+import {Container, ViewAnexo} from '../../styles/details';
 import {PaddingBottomArea} from '../../styles/general';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HistoryComponent from '../../components/historyComponent';
 import Historical from '../../models/Historical';
+import ActionSheetComponent from '../../components/actionsheetComponent';
+import {getDay, getMonth, getYear} from '../../utils/utils';
+// import {TouchableOpacity} from 'react-native';
+// import {Text} from 'react-native';
+//import {Text} from 'react-native';
 
 //
 // ─── DETAILS SCREEN RENDER ───────────────────────────────────────────────────────
@@ -142,37 +141,24 @@ const detailsScreen: React.FC<Props> = ({Props, route}: any) => {
                 <Icon name={'close'} size={25} style={{paddingLeft: 15}} />
             </ViewAnexo>
             <PaddingBottomArea padding={30} />
-            <ViewHeaderHistory>
-                <ItemsListComponent
-                    title="HISTÓRICO"
-                    fontSizeText={16}
-                    color={'black'}
-                    fontWeight={'400'}
-                    letterSpacing={3}
-                />
-                <ButtonOrderBy>
-                    <TextButtonOrderBy>Ordernar por data</TextButtonOrderBy>
-                    <Icon
-                        name={'menu-down'}
-                        size={25}
-                        style={{paddingLeft: 15}}
-                    />
-                    <Icon
-                        name={'sort-ascending'}
-                        size={25}
-                        style={{paddingLeft: 15}}
-                    />
-                </ButtonOrderBy>
-            </ViewHeaderHistory>
+            <ActionSheetComponent />
             <PaddingBottomArea padding={10} />
             {item.historicals.length > 0 &&
                 item.historicals.map((historical: Historical) => {
                     return (
-                        <HistoryComponent
-                            description={historical.description}
-                            year={'2021'}
-                            month={'Abril'}
-                        />
+                        <>
+                            <HistoryComponent
+                                key={
+                                    getYear(historical.date) +
+                                    getMonth(historical.date) +
+                                    historical.description
+                                }
+                                day={getDay(historical.date)}
+                                description={historical.description}
+                                year={getYear(historical.date)}
+                                month={getMonth(historical.date)}
+                            />
+                        </>
                     );
                 })}
         </Container>

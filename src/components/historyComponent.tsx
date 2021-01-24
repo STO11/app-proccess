@@ -17,14 +17,20 @@ export interface Props {
     description: string;
     year: string;
     month: string;
+    day: string;
 }
 
-const HistoryComponent: React.FC<Props> = ({description, year, month}: any) => {
+const HistoryComponent: React.FC<Props> = ({
+    description,
+    year,
+    month,
+    day,
+}: any) => {
     return (
         <ViewHistory>
             <ItemsHistory>
                 <NumberDay>
-                    <TextNumberDay>8</TextNumberDay>
+                    <TextNumberDay>{day}</TextNumberDay>
                 </NumberDay>
                 <PaineHistory>
                     <TextMonth>{month}</TextMonth>

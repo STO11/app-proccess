@@ -55,3 +55,21 @@ interface propPaddingBottomArea {
 export const PaddingBottomArea = styled.View<propPaddingBottomArea>`
     padding-bottom: ${(props) => props.padding}px;
 `;
+
+export const StyleSheetView = styled.View`
+    border-radius: 100px;
+    padding-top: 40px;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const StyleSheetViewItems = styled.TouchableOpacity`
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+`;
+
+export const StyleSheetTextItems = styled.Text`
+    font-size: 17px;
+    padding-left: 20px;
+`;
