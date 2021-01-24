@@ -59,8 +59,9 @@ export const PaddingBottomArea = styled.View<propPaddingBottomArea>`
 export const StyleSheetView = styled.View`
     border-radius: 100px;
     padding-top: 40px;
-    justify-content: center;
-    align-items: center;
+    padding-left: 40px;
+    justify-content: flex-start;
+    align-items: flex-start;
 `;
 
 export const StyleSheetViewItems = styled.TouchableOpacity`
@@ -72,4 +73,5 @@ export const StyleSheetViewItems = styled.TouchableOpacity`
 export const StyleSheetTextItems = styled.Text`
     font-size: 17px;
     padding-left: 20px;
+    font-weight: 500;
 `;

@@ -1,28 +1,103 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 /* eslint-disable react-native/no-inline-styles */
-import React from 'react';
+import React, {createRef, useEffect, useState} from 'react';
 import ButtonComponent from '../../components/buttonComponent';
 import ItemsListComponent from '../../components/itemsListComponent';
-import {Container, ViewAnexo} from '../../styles/details';
-import {PaddingBottomArea} from '../../styles/general';
+import {
+    Container,
+    ViewAnexo,
+    ViewHeaderHistory,
+    ButtonOrderBy,
+    TextButtonOrderBy,
+} from '../../styles/details';
+import {
+    PaddingBottomArea,
+    StyleSheetTextItems,
+    StyleSheetView,
+    StyleSheetViewItems,
+} from '../../styles/general';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HistoryComponent from '../../components/historyComponent';
 import Historical from '../../models/Historical';
-import ActionSheetComponent from '../../components/actionsheetComponent';
-import {getDay, getMonth, getYear} from '../../utils/utils';
+//import ActionSheetComponent from '../../components/actionsheetComponent';
+import {getDay, getMonth, getYear, OrderBy} from '../../utils/utils';
 // import {TouchableOpacity} from 'react-native';
 // import {Text} from 'react-native';
 //import {Text} from 'react-native';
 
+import {View} from 'react-native';
+import ActionSheet from 'react-native-actions-sheet';
+import {colors} from '../../styles/colors';
+
 //
 // ─── DETAILS SCREEN RENDER ───────────────────────────────────────────────────────
 //
+const actionSheetRef: any = createRef();
 
 export interface Props {
     fontSizeText?: number;
 }
 
 const detailsScreen: React.FC<Props> = ({Props, route}: any) => {
+    const [history, setListHistory] = useState([]);
+    const [orderByData, setOrderByData] = useState(true);
+    const [orderByDescricao, setOrderByDescricao] = useState(false);
+    const [orderByIncresDecres, setOrderByIncresDecres] = useState(true);
+    // const [orderByDescricaoCrescente, setOrderByDescricaoCrescente] = useState(
+    //     false,
+    // );
+
+    let orderBy = new OrderBy();
+
     const {item} = route.params;
+    useEffect(() => {
+        setListHistory(item.historicals);
+    }, []);
+
+    useEffect(() => {
+        console.log('entrou aqui');
+    }, [history]);
+
+    const setOrderByDataFn = (check: boolean) => {
+        setOrderByData(check);
+        setOrderByDescricao(!check);
+        if (orderByIncresDecres) {
+            orderBy.sorteDate(history, 'increasing');
+        } else {
+            orderBy.sorteDate(history, 'decreasing');
+        }
+    };
+
+    const setorderByDescricaoFn = (check: boolean) => {
+        setOrderByDescricao(check);
+        setOrderByData(!check);
+        if (orderByIncresDecres) {
+            orderBy.sorteDescription(history, 'increasing');
+        } else {
+            orderBy.sorteDescription(history, 'decreasing');
+        }
+    };
+
+    const setOrderCrescenteDescrescenteFn = (check: boolean) => {
+        setOrderByIncresDecres(check);
+        if (check) {
+            // crescente
+            if (orderByData) {
+                orderBy.sorteDate(history, 'increasing');
+            }
+            if (orderByDescricao) {
+                orderBy.sorteDescription(history, 'increasing');
+            }
+        } else {
+            // descrescente
+            if (orderByData) {
+                orderBy.sorteDate(history, 'decreasing');
+            }
+            if (orderByDescricao) {
+                orderBy.sorteDescription(history, 'decreasing');
+            }
+        }
+    };
 
     return (
         <Container>
@@ -141,10 +216,131 @@ const detailsScreen: React.FC<Props> = ({Props, route}: any) => {
                 <Icon name={'close'} size={25} style={{paddingLeft: 15}} />
             </ViewAnexo>
             <PaddingBottomArea padding={30} />
-            <ActionSheetComponent />
+            {/* {ActionSheetComponent()} */}
+            <ViewHeaderHistory>
+                <ItemsListComponent
+                    title="HISTÓRICO"
+                    fontSizeText={16}
+                    color={'black'}
+                    fontWeight={'400'}
+                    letterSpacing={3}
+                />
+                <ButtonOrderBy
+                    onPress={() => {
+                        actionSheetRef.current?.setModalVisible();
+                    }}>
+                    <TextButtonOrderBy>Ordernar por data</TextButtonOrderBy>
+                    <Icon
+                        name={'menu-down'}
+                        size={25}
+                        style={{paddingLeft: 15}}
+                    />
+                    <Icon
+                        name={'sort-ascending'}
+                        size={25}
+                        style={{paddingLeft: 15}}
+                    />
+                </ButtonOrderBy>
+            </ViewHeaderHistory>
+            <ActionSheet ref={actionSheetRef}>
+                <StyleSheetView>
+                    {/* <Text>YOUR CUSTOM COMPONENT INSIDE THE ACTIONSHEET</Text> */}
+
+                    <StyleSheetViewItems onPress={() => setOrderByDataFn(true)}>
+                        {orderByData ? (
+                            <Icon
+                                name={'check'}
+                                size={30}
+                                color={colors.primaryColor}
+                            />
+                        ) : (
+                            <Icon
+                                name={'check'}
+                                size={30}
+                                color={colors.textColor}
+                                style={{opacity: 0.2}}
+                            />
+                        )}
+                        <StyleSheetTextItems>
+                            Ordernar por data
+                        </StyleSheetTextItems>
+                    </StyleSheetViewItems>
+
+                    <PaddingBottomArea padding={10} />
+
+                    <StyleSheetViewItems
+                        onPress={() => setorderByDescricaoFn(true)}>
+                        {orderByDescricao ? (
+                            <Icon
+                                name={'check'}
+                                size={30}
+                                color={colors.primaryColor}
+                            />
+                        ) : (
+                            <Icon
+                                name={'check'}
+                                size={30}
+                                color={colors.textColor}
+                                style={{opacity: 0.2}}
+                            />
+                        )}
+                        <StyleSheetTextItems>
+                            Ordernar por Descrição
+                        </StyleSheetTextItems>
+                    </StyleSheetViewItems>
+                </StyleSheetView>
+                <View
+                    style={{
+                        borderBottomColor: 'grey',
+                        borderBottomWidth: 1,
+                        height: 40,
+                    }}
+                />
+                <StyleSheetView>
+                    {/* <Text>YOUR CUSTOM COMPONENT INSIDE THE ACTIONSHEET</Text> */}
+                    <StyleSheetViewItems
+                        onPress={() => setOrderCrescenteDescrescenteFn(true)}>
+                        {orderByIncresDecres === true ? (
+                            <Icon
+                                name={'check'}
+                                size={30}
+                                color={colors.primaryColor}
+                            />
+                        ) : (
+                            <Icon
+                                name={'check'}
+                                size={30}
+                                color={colors.textColor}
+                                style={{opacity: 0.2}}
+                            />
+                        )}
+                        <StyleSheetTextItems>Crescente</StyleSheetTextItems>
+                    </StyleSheetViewItems>
+                    <PaddingBottomArea padding={10} />
+                    <StyleSheetViewItems
+                        onPress={() => setOrderCrescenteDescrescenteFn(false)}>
+                        {orderByIncresDecres === false ? (
+                            <Icon
+                                name={'check'}
+                                size={30}
+                                color={colors.primaryColor}
+                            />
+                        ) : (
+                            <Icon
+                                name={'check'}
+                                size={30}
+                                color={colors.textColor}
+                                style={{opacity: 0.2}}
+                            />
+                        )}
+                        <StyleSheetTextItems>Decrescente</StyleSheetTextItems>
+                    </StyleSheetViewItems>
+                </StyleSheetView>
+                <PaddingBottomArea padding={20} />
+            </ActionSheet>
             <PaddingBottomArea padding={10} />
-            {item.historicals.length > 0 &&
-                item.historicals.map((historical: Historical) => {
+            {history.length > 0 &&
+                history.map((historical: Historical) => {
                     return (
                         <>
                             <HistoryComponent
@@ -164,4 +360,5 @@ const detailsScreen: React.FC<Props> = ({Props, route}: any) => {
         </Container>
     );
 };
+
 export default detailsScreen;

@@ -87,9 +87,7 @@ const ActionSheetComponent = () => {
                             size={30}
                             color={colors.primaryColor}
                         />
-                        <StyleSheetTextItems>
-                            Ordernar por data
-                        </StyleSheetTextItems>
+                        <StyleSheetTextItems>Cresceste</StyleSheetTextItems>
                     </StyleSheetViewItems>
                     <PaddingBottomArea padding={10} />
                     <StyleSheetViewItems>
@@ -98,9 +96,7 @@ const ActionSheetComponent = () => {
                             size={30}
                             color={colors.primaryColor}
                         />
-                        <StyleSheetTextItems>
-                            Ordernar por Descrição
-                        </StyleSheetTextItems>
+                        <StyleSheetTextItems>Decrescente</StyleSheetTextItems>
                     </StyleSheetViewItems>
                 </StyleSheetView>
                 <PaddingBottomArea padding={20} />

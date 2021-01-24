@@ -57,3 +57,29 @@ export const getDay = (data: string) => {
     let day = dateObj.getUTCDate();
     return day.toString();
 };
+
+export class OrderBy {
+    sorteDate(list: any, type: string) {
+        if (type === 'increasing') {
+            list.sort((a: any, b: any) =>
+                new Date(a.date) < new Date(b.date) ? 1 : -1,
+            );
+        } else {
+            list.sort((a: any, b: any) =>
+                new Date(a.date) > new Date(b.date) ? 1 : -1,
+            );
+        }
+    }
+
+    sorteDescription(list: any, type: string) {
+        if (type === 'increasing') {
+            list.sort((a: any, b: any) =>
+                a.description > b.description ? 1 : -1,
+            );
+        } else {
+            list.sort((a: any, b: any) =>
+                a.description < b.description ? 1 : -1,
+            );
+        }
+    }
+}
