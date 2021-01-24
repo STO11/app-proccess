@@ -13,7 +13,13 @@ import {PaddingBottomArea} from '../styles/general';
 
 // import { Container } from './styles';
 
-const HistoryComponent: React.FC = () => {
+export interface Props {
+    description: string;
+    year: string;
+    month: string;
+}
+
+const HistoryComponent: React.FC<Props> = ({description, year, month}: any) => {
     return (
         <ViewHistory>
             <ItemsHistory>
@@ -21,15 +27,11 @@ const HistoryComponent: React.FC = () => {
                     <TextNumberDay>8</TextNumberDay>
                 </NumberDay>
                 <PaineHistory>
-                    <TextMonth>Abril</TextMonth>
+                    <TextMonth>{month}</TextMonth>
                     <PaddingBottomArea padding={1} />
-                    <TextYear>2019</TextYear>
+                    <TextYear>{year}</TextYear>
                     <PaddingBottomArea padding={2} />
-                    <TextHistory>
-                        Ola meu suelton de souza lima sou programador estou a
-                        muitos anos no cargo com php e gostaria de migrar para o
-                        mobile
-                    </TextHistory>
+                    <TextHistory>{description}</TextHistory>
                 </PaineHistory>
             </ItemsHistory>
         </ViewHistory>

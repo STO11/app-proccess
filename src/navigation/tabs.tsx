@@ -6,10 +6,60 @@ import IconFeather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 import {Routes} from './routes';
+import {createStackNavigator} from '@react-navigation/stack';
+import homeScreen from '../screens/home/HomeScreen';
+import detailsScreen from '../screens/details/DetailsScreen';
+import {TouchableHighlight} from 'react-native';
+import IconAttach from 'react-native-vector-icons/Ionicons';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 //
 // ─── FOR TABBAR SETTINGS AND STYLES ─────────────────────────────────────────────
 //
 const Tab = createBottomTabNavigator<Record<string, object | undefined>>();
+
+const Stack = createStackNavigator<Record<string, object | undefined>>();
+
+const Left = ({onPress}: any) => (
+    <TouchableHighlight onPress={onPress} style={{paddingLeft: 20}}>
+        <Icon
+            name={'keyboard-backspace'}
+            size={25}
+            color={colors.primaryColor}
+        />
+    </TouchableHighlight>
+);
+
+const Attach = ({onPress}: any) => (
+    <TouchableHighlight onPress={onPress} style={{paddingRight: 20}}>
+        <IconAttach name={'attach'} size={30} color={colors.primaryColor} />
+    </TouchableHighlight>
+);
+
+export const StackHome = ({navigation}: any) => {
+    return (
+        <Stack.Navigator
+            screenOptions={{
+                headerBackTitleVisible: false,
+                headerBackImage: () => (
+                    <Left onPress={() => navigation.back()} />
+                ),
+                headerTitleAlign: 'left',
+                headerRight: () => <Attach />,
+                animationEnabled: false,
+            }}>
+            <Stack.Screen
+                name="Home"
+                component={homeScreen}
+                options={Routes.HOME.options}
+            />
+            <Stack.Screen
+                name={Routes.DETAILS.name}
+                component={detailsScreen}
+            />
+        </Stack.Navigator>
+    );
+};
+
 export const Tabs = () => {
     return (
         <Tab.Navigator
@@ -68,9 +118,14 @@ export const Tabs = () => {
                 },
             })}>
             {/* Screen for tabs route */}
-            <Tab.Screen
+            {/* <Tab.Screen
                 name={Routes.HOME.name}
                 component={Routes.HOME.screen}
+                options={Routes.HOME.options}
+            /> */}
+            <Tab.Screen
+                name={Routes.HOME.name}
+                component={StackHome}
                 options={Routes.HOME.options}
             />
             <Tab.Screen

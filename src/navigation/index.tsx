@@ -4,10 +4,10 @@ import {createStackNavigator} from '@react-navigation/stack';
 import {Routes} from './routes';
 import {Tabs} from './tabs';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import IconAttach from 'react-native-vector-icons/Ionicons';
-import {TouchableHighlight} from 'react-native';
-import {colors} from '../styles/colors';
-import {Tabs2} from './tabsDetails';
+// import IconAttach from 'react-native-vector-icons/Ionicons';
+// import {TouchableHighlight} from 'react-native';
+// import {colors} from '../styles/colors';
+// import {Tabs2} from './tabsDetails';
 import {Storage} from '../services/storage';
 import {useState} from 'react';
 import {useEffect} from 'react';
@@ -19,23 +19,23 @@ export interface Props {
     icon?: Icon;
 }
 
-const Left = ({onPress}: any) => (
-    <TouchableHighlight onPress={onPress} style={{paddingLeft: 20}}>
-        <Icon
-            name={'keyboard-backspace'}
-            size={25}
-            color={colors.primaryColor}
-        />
-    </TouchableHighlight>
-);
+// const Left = ({onPress}: any) => (
+//     <TouchableHighlight onPress={onPress} style={{paddingLeft: 20}}>
+//         <Icon
+//             name={'keyboard-backspace'}
+//             size={25}
+//             color={colors.primaryColor}
+//         />
+//     </TouchableHighlight>
+// );
 
-const Attach = ({onPress}: any) => (
-    <TouchableHighlight onPress={onPress} style={{paddingRight: 20}}>
-        <IconAttach name={'attach'} size={30} color={colors.primaryColor} />
-    </TouchableHighlight>
-);
+// const Attach = ({onPress}: any) => (
+//     <TouchableHighlight onPress={onPress} style={{paddingRight: 20}}>
+//         <IconAttach name={'attach'} size={30} color={colors.primaryColor} />
+//     </TouchableHighlight>
+// );
 
-export const Navigation: React.FC<Props> = ({navigation}) => {
+export const Navigation: React.FC<Props> = () => {
     const [online, setOnline] = useState(false);
 
     useEffect(() => {
@@ -53,11 +53,11 @@ export const Navigation: React.FC<Props> = ({navigation}) => {
                 //initialRouteName={online ? Routes.LOGIN.name : Routes.TABS.name}
                 screenOptions={{
                     headerBackTitleVisible: false,
-                    headerBackImage: () => (
-                        <Left onPress={() => navigation.back()} />
-                    ),
+                    // headerBackImage: () => (
+                    //     <Left onPress={() => navigation.back()} />
+                    // ),
                     headerTitleAlign: 'left',
-                    headerRight: () => <Attach />,
+                    //headerRight: () => <Attach />,
                     animationEnabled: false,
                 }}>
                 {!online && (
@@ -78,7 +78,7 @@ export const Navigation: React.FC<Props> = ({navigation}) => {
                     options={Routes.LOGINOFFLINE.options}
                 />
 
-                <Stack.Screen name={Routes.TABS2.name} component={Tabs2} />
+                {/* <Stack.Screen name={Routes.TABS2.name} component={Tabs2} /> */}
             </Stack.Navigator>
         </NavigationContainer>
     );

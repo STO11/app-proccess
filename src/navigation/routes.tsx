@@ -23,21 +23,17 @@ export const Routes = {
             title: 'PROCESSOS',
             animationEnabled: false,
             //headerStyle: {},
-            //headerShown: false,
+            headerShown: false,
             // headerTintColor: 'white',
         },
     },
     DETAILS: {
         screen: detailsScreen,
-        name: 'Details',
+        name: 'PROCESSO',
         title: 'PROCESSOS',
         options: {
             title: 'PROCESSOS',
             headerStyle: {},
-
-            // headerTintColor: 'white',
-            //headerShown: true,
-            //tabBarVisible: false,
         },
     },
     PROFILE: {
@@ -63,5 +59,4 @@ export const Routes = {
         },
     },
     TABS: {screen: null, name: 'Tabs'},
-    TABS2: {screen: null, name: 'PROCESSO'},
 };

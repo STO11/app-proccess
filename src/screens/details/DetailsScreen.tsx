@@ -11,6 +11,7 @@ import {
 import {PaddingBottomArea} from '../../styles/general';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HistoryComponent from '../../components/historyComponent';
+import Historical from '../../models/Historical';
 
 //
 // ─── DETAILS SCREEN RENDER ───────────────────────────────────────────────────────
@@ -20,13 +21,16 @@ export interface Props {
     fontSizeText?: number;
 }
 
-const detailsScreen: React.FC<Props> = ({Props}: any) => {
+const detailsScreen: React.FC<Props> = ({Props, route}: any) => {
+    const {item} = route.params;
+
     return (
         <Container>
             <ItemsListComponent
                 letterSpacing={0}
                 {...Props}
-                title="Cristiane Marcal de Arruda Candido x Aparedido Donizeti Rodrigues"
+                //title="Cristiane Marcal de Arruda Candido x Aparedido Donizeti Rodrigues"
+                title={item.title}
                 fontSizeText={20}
                 color={'black'}
                 fontWeight={'400'}
@@ -42,7 +46,7 @@ const detailsScreen: React.FC<Props> = ({Props}: any) => {
             <PaddingBottomArea padding={2} />
             <ItemsListComponent
                 letterSpacing={0}
-                title="475786869-34.2016.8.26.0650"
+                title={item.number}
                 fontSizeText={15}
                 color={'black'}
                 fontWeight={'300'}
@@ -58,7 +62,7 @@ const detailsScreen: React.FC<Props> = ({Props}: any) => {
             <PaddingBottomArea padding={2} />
             <ItemsListComponent
                 letterSpacing={0}
-                title="Cristiane Marcal de Arruda Candido"
+                title={item?.customers[0].name ?? item.customers[0].name}
                 fontSizeText={15}
                 color={'black'}
                 fontWeight={'300'}
@@ -74,11 +78,14 @@ const detailsScreen: React.FC<Props> = ({Props}: any) => {
             <PaddingBottomArea padding={2} />
             <ItemsListComponent
                 letterSpacing={0}
-                title="Requerente"
+                title={
+                    item?.customers[0].roleName ?? item.customers[0].roleName
+                }
                 fontSizeText={15}
                 color={'black'}
                 fontWeight={'300'}
             />
+
             <PaddingBottomArea padding={7} />
             <ItemsListComponent
                 letterSpacing={0}
@@ -90,7 +97,7 @@ const detailsScreen: React.FC<Props> = ({Props}: any) => {
             <PaddingBottomArea padding={2} />
             <ItemsListComponent
                 letterSpacing={0}
-                title="2 Vara da Familina e Sucessões - Foro Central Cívil"
+                title={item.court}
                 fontSizeText={15}
                 color={'black'}
                 fontWeight={'300'}
@@ -107,7 +114,7 @@ const detailsScreen: React.FC<Props> = ({Props}: any) => {
             <PaddingBottomArea padding={2} />
             <ItemsListComponent
                 letterSpacing={0}
-                title="R$ 12.500,00"
+                title={'R$ ' + item.amount}
                 fontSizeText={15}
                 color={'black'}
                 fontWeight={'300'}
@@ -157,11 +164,16 @@ const detailsScreen: React.FC<Props> = ({Props}: any) => {
                 </ButtonOrderBy>
             </ViewHeaderHistory>
             <PaddingBottomArea padding={10} />
-            <HistoryComponent />
-            <HistoryComponent />
-            <HistoryComponent />
-            <HistoryComponent />
-            <HistoryComponent />
+            {item.historicals.length > 0 &&
+                item.historicals.map((historical: Historical) => {
+                    return (
+                        <HistoryComponent
+                            description={historical.description}
+                            year={'2021'}
+                            month={'Abril'}
+                        />
+                    );
+                })}
         </Container>
     );
 };
