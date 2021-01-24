@@ -1,15 +1,21 @@
 import styled from 'styled-components/native';
 import {Props} from '../../screens/home/HomeScreen';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
     background-color: white;
+    flex: 1;
     padding-right: 20px;
     padding-left: 20px;
     padding-top: 30px;
     padding-bottom: 5px;
-    flex: 1;
 `;
 
+/**
+ * flex: 1;
+ * padding-right: 20px;
+    padding-left: 20px;
+    padding-top: 30px;
+    padding-bottom: 5px; */
 export const TitleView = styled.View<Props>`
     flex-direction: row;
     margin-top: 60px;

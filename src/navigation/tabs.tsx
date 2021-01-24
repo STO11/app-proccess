@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
-import {Platform} from 'react-native';
+//import {Platform} from 'react-native';
 import {colors} from '../styles/colors';
 import IconFeather from 'react-native-vector-icons/Feather';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -23,7 +23,7 @@ export const Tabs = () => {
                 activeTintColor: colors.primaryColor,
                 inactiveTintColor: colors.backgroundColor,
                 tabStyle: {
-                    marginTop: Platform.OS === 'ios' ? 0 : 0,
+                    //marginTop: Platform.OS === 'ios' ? 0 : 0,
                     //height: 40,
                     flexDirection: 'row-reverse',
                     backgroundColor: colors.backgroundTabColor,
@@ -46,9 +46,6 @@ export const Tabs = () => {
                             break;
                         case 'Profile':
                             iconName = 'account-outline';
-                            break;
-                        case 'Details':
-                            iconName = 'details';
                             break;
                         default:
                             iconName = 'circle';

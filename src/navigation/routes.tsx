@@ -1,5 +1,5 @@
 import detailsScreen from '../screens/details/DetailsScreen';
-import homeScreen from '../screens/home/HomeScreen';
+import HomeScreen from '../screens/home/HomeScreen';
 import loginScreen from '../screens/login/LoginScreen';
 import profileScreen from '../screens/profile/ProfileScreen';
 
@@ -15,12 +15,13 @@ export const Routes = {
         },
     },
     HOME: {
-        screen: homeScreen,
+        screen: HomeScreen,
         name: 'Home',
         title: 'Home Page',
         options: {
             title: 'PROCESSOS',
-            headerStyle: {},
+            //headerStyle: {},
+            //headerShown: false,
             // headerTintColor: 'white',
         },
     },

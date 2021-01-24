@@ -1,12 +1,12 @@
 import React from 'react';
 import ButtonComponent from '../../components/buttonComponent';
 import {PaddingBottomArea} from '../../styles/general';
-import {Container, TextTitle} from '../../styles/profile';
+import {Container, TextTitle} from '../../styles/profiles';
 
 // import { Container } from './styles';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-const profileScreen: React.FC = ({navigation}: any) => {
+const ProfileScreen: React.FC = ({navigation}: any) => {
     return (
         <Container>
             <TextTitle fontSizeText={40}>Usuário</TextTitle>
@@ -27,4 +27,4 @@ const profileScreen: React.FC = ({navigation}: any) => {
     );
 };
 
-export default profileScreen;
+export default ProfileScreen;

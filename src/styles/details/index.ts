@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 import {Props} from '../../screens/details/DetailsScreen';
 import {colors} from '../colors';
 
-export const Container = styled.View`
+export const Container = styled.ScrollView`
     background-color: white;
     padding-right: 20px;
     padding-left: 20px;

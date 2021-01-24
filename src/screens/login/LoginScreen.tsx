@@ -22,23 +22,25 @@ const loginScreen: React.FC<Props> = ({navigation}) => {
         navigation.replace(Routes.TABS.name);
     }
     return (
-        <>
-            <Container>
-                <TextLogin>Login</TextLogin>
-                <InputComponent placeholder="Usuário" bgColor={'white'} />
-                <PaddingBottomArea padding={10} />
-                <InputComponent placeholder="Senha" bgColor={'white'} />
-                <PaddingBottomArea padding={20} />
-                <ButtonComponent
-                    width="100%"
-                    height="50px"
-                    children="ENTRAR"
-                    paddingArea="0px"
-                    fontsize={20}
-                    onPress={() => goTo()}
-                />
-            </Container>
-        </>
+        <Container>
+            <TextLogin>Login</TextLogin>
+            <InputComponent
+                placeholder="Usuário"
+                bgColor={'white'}
+                onChangeText={() => null}
+            />
+            <PaddingBottomArea padding={10} />
+            <InputComponent placeholder="Senha" bgColor={'white'} />
+            <PaddingBottomArea padding={20} />
+            <ButtonComponent
+                width="100%"
+                height="50px"
+                children="ENTRAR"
+                paddingArea="0px"
+                fontsize={20}
+                onPress={() => goTo()}
+            />
+        </Container>
     );
 };
 

@@ -50,12 +50,12 @@ export const Navigation: React.FC<Props> = ({navigation}) => {
                     component={Routes.LOGIN.screen}
                     options={Routes.LOGIN.options}
                 />
-                <Stack.Screen name={Routes.TABS2.name} component={Tabs2} />
                 <Stack.Screen
                     options={{headerShown: false}}
                     name={Routes.TABS.name}
                     component={Tabs}
                 />
+                <Stack.Screen name={Routes.TABS2.name} component={Tabs2} />
             </Stack.Navigator>
         </NavigationContainer>
     );
