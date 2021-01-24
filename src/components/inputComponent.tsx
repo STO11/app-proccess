@@ -22,6 +22,7 @@ export interface Props {
     onChangeText: Function;
     autoCapitalize?: string;
     secureTextEntry?: boolean;
+    width?: string;
     //theme?: ThemeShape;
 }
 
@@ -33,6 +34,7 @@ const InputComponent: React.FC<Props> = ({
     placeholder,
     autoCapitalize,
     secureTextEntry,
+    width,
 }: any) => {
     return (
         <InputText
@@ -41,6 +43,7 @@ const InputComponent: React.FC<Props> = ({
             placeholder={placeholder}
             onChangeText={onChangeText}
             bgColor={bgColor}
+            width={width}
             value={value}
             secureTextEntry={secureTextEntry}
         />

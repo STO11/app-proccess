@@ -6,7 +6,7 @@ import {Props as PropButton} from '../components/buttonComponent';
 
 export const InputText = styled.TextInput<Props>`
     height: 60px;
-    width: 100%;
+    width: ${(props) => props.width};
     border-width: 2px;
     border-radius: 10px;
     border-color: ${colors.inputBorder};

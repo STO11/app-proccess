@@ -8,6 +8,7 @@ export const Container = styled.View`
     padding-left: 20px;
     padding-top: 30px;
     padding-bottom: 5px;
+    justify-content: center;
 `;
 export const Scroll = styled.ScrollView``;
 /**

@@ -48,6 +48,7 @@ const loginScreen: React.FC<Props> = ({navigation}: any) => {
                 autoCapitalize="none"
                 placeholder="Usuário"
                 bgColor={'white'}
+                width="100%"
                 value={user}
                 onChangeText={(v: any) => setUser(v)}
             />
@@ -56,6 +57,7 @@ const loginScreen: React.FC<Props> = ({navigation}: any) => {
                 autoCapitalize="none"
                 placeholder="Senha"
                 secureTextEntry={true}
+                width="100%"
                 bgColor={'white'}
                 value={password}
                 onChangeText={(v: any) => setPassword(v)}

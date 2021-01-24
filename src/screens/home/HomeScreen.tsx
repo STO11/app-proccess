@@ -8,7 +8,9 @@ import {PaddingBottomArea} from '../../styles/general';
 import {Routes} from '../../navigation/routes';
 import {HomeController} from '../../controllers/HomeController';
 import {useState} from 'react';
-import {FlatList} from 'react-native';
+import {FlatList, Text, View} from 'react-native';
+import InputComponent from '../../components/inputComponent';
+import Case from '../../models/Case';
 
 export interface Props {
     fontSizeText?: number;
@@ -19,11 +21,14 @@ export interface Props {
 //
 const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
     const [listCases, setListCases] = useState([]);
+    const [listCasesOriginal, setListCasesOriginal] = useState([]);
+    const [search, setSearch] = useState(false);
     useEffect(() => {
         const api = async () => {
             let cases = await HomeController.getCases();
             if (cases != null) {
                 setListCases(cases);
+                setListCasesOriginal(cases);
             }
         };
         api();
@@ -74,25 +79,68 @@ const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
         );
     };
 
+    const searchText = (search: string) => {
+        let text = search.toLowerCase();
+        let list = listCases;
+        setListCases(listCasesOriginal);
+        if (!search || search === '') {
+            return false;
+        }
+        let filter = list.filter((item: Case) => {
+            return (
+                item.title.toLowerCase().match(text) ||
+                item.number.toLowerCase().match(text)
+            );
+        });
+        setListCases(filter);
+    };
+
     return (
         <Container>
             <TitleView>
-                <TextTitle {...Props} fontSizeText={40}>
-                    Processos
-                </TextTitle>
-                <Ionicons
-                    name={'search'}
-                    size={30}
-                    color={colors.primaryColor}
-                    onPress={() => null}
-                />
+                {!search && (
+                    <TextTitle {...Props} fontSizeText={40}>
+                        Processos
+                    </TextTitle>
+                )}
+                {!search && (
+                    <Ionicons
+                        name={'search'}
+                        size={35}
+                        color={colors.primaryColor}
+                        onPress={() => setSearch(true)}
+                    />
+                )}
+                {search && (
+                    <InputComponent
+                        autoCapitalize="none"
+                        placeholder="Pesquisar"
+                        bgColor={'white'}
+                        width="90%"
+                        onChangeText={(v: any) => searchText(v)}
+                    />
+                )}
+                {search && (
+                    <Ionicons
+                        name={'close-outline'}
+                        size={50}
+                        color={colors.primaryColor}
+                        onPress={() => setSearch(false)}
+                    />
+                )}
             </TitleView>
             <PaddingBottomArea padding={20} />
-            <FlatList
-                data={listCases}
-                renderItem={renderItem}
-                keyExtractor={(item: any) => item.id}
-            />
+            {listCases.length > 0 ? (
+                <FlatList
+                    data={listCases}
+                    renderItem={renderItem}
+                    keyExtractor={(item: any) => item.id}
+                />
+            ) : (
+                <View style={{flex: 1}}>
+                    <Text>Sem registros</Text>
+                </View>
+            )}
             <PaddingBottomArea padding={0} />
         </Container>
     );
