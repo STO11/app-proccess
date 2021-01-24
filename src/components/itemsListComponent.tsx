@@ -9,6 +9,7 @@ export interface Props {
     title: string;
     fontWeight?: string;
     onPress?: (event: GestureResponderEvent) => void;
+    letterSpacing?: number;
 }
 
 const ItemsListComponent: React.FC<Props> = ({
@@ -18,11 +19,13 @@ const ItemsListComponent: React.FC<Props> = ({
     color,
     fontWeight,
     onPress,
+    letterSpacing,
 }: any) => {
     return (
         <ItemList onPress={onPress}>
             <ItemListTextTitle
                 {...Props}
+                letterSpacing={letterSpacing}
                 fontSizeText={fontSizeText}
                 color={color}
                 fontWeight={fontWeight}>

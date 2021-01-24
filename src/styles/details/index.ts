@@ -6,7 +6,7 @@ export const Container = styled.ScrollView`
     background-color: white;
     padding-right: 20px;
     padding-left: 20px;
-    padding-top: 5px;
+    padding-top: 10px;
     padding-bottom: 3px;
     flex: 1;
 `;
@@ -66,4 +66,19 @@ export const TextHistory = styled.Text`
     color: black;
     padding-left: 15px;
     text-align: justify;
+    color: ${colors.textColor};
+`;
+
+export const ViewHeaderHistory = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+`;
+
+export const ButtonOrderBy = styled.TouchableOpacity`
+    flex-direction: row;
+    align-items: center;
+`;
+export const TextButtonOrderBy = styled.Text`
+    font-size: 14px;
+    color: ${colors.textColor};
 `;

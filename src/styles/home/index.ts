@@ -1,7 +1,7 @@
 import styled from 'styled-components/native';
 import {Props} from '../../screens/home/HomeScreen';
 
-export const Container = styled.ScrollView`
+export const Container = styled.View`
     background-color: white;
     flex: 1;
     padding-right: 20px;
@@ -9,7 +9,7 @@ export const Container = styled.ScrollView`
     padding-top: 30px;
     padding-bottom: 5px;
 `;
-
+export const Scroll = styled.ScrollView``;
 /**
  * flex: 1;
  * padding-right: 20px;

@@ -42,7 +42,7 @@ export const ItemListTextTitle = styled.Text<PropItemListText>`
     font-family: Roboto-Light;
     color: ${(props) => props?.color};
     font-weight: ${(props) => props?.fontWeight};
-    font-family: Roboto-Light;
+    letter-spacing: ${(props) => props?.letterSpacing}px;
 `;
 
 //
