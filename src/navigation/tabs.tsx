@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import * as React from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 //import {Platform} from 'react-native';
@@ -118,11 +119,6 @@ export const Tabs = () => {
                 },
             })}>
             {/* Screen for tabs route */}
-            {/* <Tab.Screen
-                name={Routes.HOME.name}
-                component={Routes.HOME.screen}
-                options={Routes.HOME.options}
-            /> */}
             <Tab.Screen
                 name={Routes.HOME.name}
                 component={StackHome}

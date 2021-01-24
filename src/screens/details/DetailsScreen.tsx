@@ -1,3 +1,4 @@
+/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import ButtonComponent from '../../components/buttonComponent';
 import ItemsListComponent from '../../components/itemsListComponent';

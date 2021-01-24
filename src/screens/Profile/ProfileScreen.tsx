@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, {useState, useEffect} from 'react';
 import ButtonComponent from '../../components/buttonComponent';
 import {LoginController} from '../../controllers/LoginController';
@@ -6,9 +5,6 @@ import {Routes} from '../../navigation/routes';
 import {PaddingBottomArea} from '../../styles/general';
 import {Container, TextTitle} from '../../styles/profiles';
 
-// import { Container } from './styles';
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 const ProfileScreen: React.FC = ({navigation}: any) => {
     const [email, setEmail] = useState('');
 
