@@ -1,9 +1,9 @@
 import React from 'react';
-import {TextInputProps} from 'react-native';
+//import {TextInputProps} from 'react-native';
 import {InputText} from '../styles/general';
 
 // import { Container } from './styles';
-export interface Props extends TextInputProps {
+export interface Props {
     // added extends TextInputProps and renamed interface
     mode?: 'flat' | 'outlined';
     disabled?: boolean;
@@ -19,16 +19,30 @@ export interface Props extends TextInputProps {
     style?: any;
     bgColor?: string;
     paddingBottom?: number;
+    onChangeText: Function;
+    autoCapitalize?: string;
+    secureTextEntry?: boolean;
     //theme?: ThemeShape;
 }
 
-const InputComponent: React.FC<Props> = (Props) => {
+const InputComponent: React.FC<Props> = ({
+    Props,
+    onChangeText,
+    value,
+    bgColor,
+    placeholder,
+    autoCapitalize,
+    secureTextEntry,
+}: any) => {
     return (
         <InputText
-            placeholder="Type here to translate!"
             {...Props}
-            onChangeText={() => null}
-            value=""
+            autoCapitalize={autoCapitalize}
+            placeholder={placeholder}
+            onChangeText={onChangeText}
+            bgColor={bgColor}
+            value={value}
+            secureTextEntry={secureTextEntry}
         />
     );
 };

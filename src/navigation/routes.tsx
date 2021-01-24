@@ -12,6 +12,7 @@ export const Routes = {
             headerStyle: {},
             // headerTintColor: 'white',
             headerShown: false,
+            animationEnabled: false,
         },
     },
     HOME: {
@@ -20,6 +21,7 @@ export const Routes = {
         title: 'Home Page',
         options: {
             title: 'PROCESSOS',
+            animationEnabled: false,
             //headerStyle: {},
             //headerShown: false,
             // headerTintColor: 'white',
@@ -47,6 +49,17 @@ export const Routes = {
             headerStyle: {},
             headerShown: false,
             // headerTintColor: 'white',
+        },
+    },
+    LOGINOFFLINE: {
+        screen: loginScreen,
+        name: 'LoginOffline',
+        options: {
+            title: 'Login Offline',
+            headerStyle: {},
+            // headerTintColor: 'white',
+            headerShown: false,
+            animationEnabled: false,
         },
     },
     TABS: {screen: null, name: 'Tabs'},

@@ -8,6 +8,9 @@ import IconAttach from 'react-native-vector-icons/Ionicons';
 import {TouchableHighlight} from 'react-native';
 import {colors} from '../styles/colors';
 import {Tabs2} from './tabsDetails';
+import {Storage} from '../services/storage';
+import {useState} from 'react';
+import {useEffect} from 'react';
 
 const Stack = createStackNavigator<Record<string, object | undefined>>();
 
@@ -33,10 +36,21 @@ const Attach = ({onPress}: any) => (
 );
 
 export const Navigation: React.FC<Props> = ({navigation}) => {
+    const [online, setOnline] = useState(false);
+
+    useEffect(() => {
+        const statOnline = async () => {
+            let userState = await Storage.onlineState();
+            setOnline(userState);
+            //return userState;
+        };
+        statOnline();
+    }, []);
+
     return (
         <NavigationContainer>
             <Stack.Navigator
-                initialRouteName={Routes.LOGIN.name}
+                //initialRouteName={online ? Routes.LOGIN.name : Routes.TABS.name}
                 screenOptions={{
                     headerBackTitleVisible: false,
                     headerBackImage: () => (
@@ -44,17 +58,26 @@ export const Navigation: React.FC<Props> = ({navigation}) => {
                     ),
                     headerTitleAlign: 'left',
                     headerRight: () => <Attach />,
+                    animationEnabled: false,
                 }}>
-                <Stack.Screen
-                    name={Routes.LOGIN.name}
-                    component={Routes.LOGIN.screen}
-                    options={Routes.LOGIN.options}
-                />
+                {!online && (
+                    <Stack.Screen
+                        name={Routes.LOGIN.name}
+                        component={Routes.LOGIN.screen}
+                        options={Routes.LOGIN.options}
+                    />
+                )}
                 <Stack.Screen
                     options={{headerShown: false}}
                     name={Routes.TABS.name}
                     component={Tabs}
                 />
+                <Stack.Screen
+                    name={Routes.LOGINOFFLINE.name}
+                    component={Routes.LOGINOFFLINE.screen}
+                    options={Routes.LOGINOFFLINE.options}
+                />
+
                 <Stack.Screen name={Routes.TABS2.name} component={Tabs2} />
             </Stack.Navigator>
         </NavigationContainer>

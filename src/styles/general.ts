@@ -5,7 +5,7 @@ import {Props as PropItemListText} from '../components/itemsListComponent';
 import {Props as PropButton} from '../components/buttonComponent';
 
 export const InputText = styled.TextInput<Props>`
-    height: 50px;
+    height: 60px;
     width: 100%;
     border-width: 2px;
     border-radius: 10px;

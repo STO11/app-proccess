@@ -23,3 +23,7 @@ export const TextLogin = styled.Text`
     font-family: Roboto-Light;
     padding-bottom: 50px;
 `;
+
+export const TextMessageError = styled.Text`
+    color: red;
+`;
