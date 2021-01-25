@@ -50,7 +50,9 @@ export const StackHome = ({navigation}: any) => {
             screenOptions={{
                 headerBackTitleVisible: false,
                 headerBackImage: () => (
-                    <Left onPress={() => navigation.goBack()} />
+                    <Left
+                        onPress={() => navigation.navigate(Routes.HOME.name)}
+                    />
                 ),
                 headerTitleAlign: 'left',
                 // headerRight: () => (
@@ -106,7 +108,7 @@ export const Tabs = () => {
                 tabBarIcon: ({color, size}) => {
                     let iconName;
                     switch (route.name) {
-                        case 'Home':
+                        case 'Stack':
                             iconName = 'folder';
                             break;
                         case 'Profile':
@@ -117,7 +119,7 @@ export const Tabs = () => {
                             break;
                     }
 
-                    return route.name === 'Home' ? (
+                    return route.name === 'Stack' ? (
                         <IconFeather
                             name={iconName}
                             size={size}
@@ -134,7 +136,7 @@ export const Tabs = () => {
             })}>
             {/* Screen for tabs route */}
             <Tab.Screen
-                name={Routes.HOME.name}
+                name={Routes.STACK.name}
                 component={StackHome}
                 options={Routes.HOME.options}
             />

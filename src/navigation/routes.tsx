@@ -59,4 +59,5 @@ export const Routes = {
         },
     },
     TABS: {screen: null, name: 'Tabs'},
+    STACK: {screen: null, name: 'Stack'},
 };
