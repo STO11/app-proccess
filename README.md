@@ -39,7 +39,7 @@ pod install
 
 Na raiz do projeto abra e copie o arquivo `.env.example` criando outro arquivo `.env`
 
-Setando as variaveis  `API_URL` (Seu endpoint, apenas a base URL principal) e `API_TOKEN` (chave no header)
+Setando as variaveis  `API_URL` (Seu endpoint, apenas a base URL principal) e `API_TOKEN` (chave no header x-frontend-test)
 
 Após isso utilize os comandos para rodar sua aplicação:
 
