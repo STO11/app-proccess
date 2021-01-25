@@ -6,7 +6,7 @@
 
 ## Instalação
 
-Window OS X & Linux:
+Windows OS X & Linux:
 
 ```sh
 git clone https://github.com/STO11/app-proccess.git
