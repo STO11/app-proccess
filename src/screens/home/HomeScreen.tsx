@@ -11,6 +11,7 @@ import {useState} from 'react';
 import {FlatList, Text, View} from 'react-native';
 import InputComponent from '../../components/inputComponent';
 import Case from '../../models/Case';
+import {Storage} from '../../services/storage';
 
 export interface Props {
     fontSizeText?: number;
@@ -23,6 +24,7 @@ const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
     const [listCases, setListCases] = useState([]);
     const [listCasesOriginal, setListCasesOriginal] = useState([]);
     const [search, setSearch] = useState(false);
+    let storage = Storage;
     useEffect(() => {
         const api = async () => {
             let cases = await HomeController.getCases();
@@ -47,6 +49,7 @@ const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
                         navigation.navigate(Routes.DETAILS.name, {
                             item: data.item,
                         });
+                        storage.deleteFakeAttach();
                     }}
                 />
                 <PaddingBottomArea padding={5} />
@@ -60,6 +63,7 @@ const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
                         navigation.navigate(Routes.DETAILS.name, {
                             item: data.item,
                         });
+                        storage.deleteFakeAttach();
                     }}
                 />
                 <ItemsListComponent
@@ -72,6 +76,7 @@ const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
                         navigation.navigate(Routes.DETAILS.name, {
                             item: data.item,
                         });
+                        storage.deleteFakeAttach();
                     }}
                 />
                 <PaddingBottomArea padding={20} />
@@ -93,6 +98,11 @@ const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
             );
         });
         setListCases(filter);
+    };
+
+    const closeSearch = () => {
+        setSearch(false);
+        setListCases(listCasesOriginal);
     };
 
     return (
@@ -125,7 +135,7 @@ const homeScreen: React.FC<Props> = ({Props, navigation}: any) => {
                         name={'close-outline'}
                         size={50}
                         color={colors.primaryColor}
-                        onPress={() => setSearch(false)}
+                        onPress={() => closeSearch()}
                     />
                 )}
             </TitleView>

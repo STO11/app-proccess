@@ -10,9 +10,10 @@ import {Routes} from './routes';
 import {createStackNavigator} from '@react-navigation/stack';
 import homeScreen from '../screens/home/HomeScreen';
 import detailsScreen from '../screens/details/DetailsScreen';
-import {TouchableHighlight} from 'react-native';
-import IconAttach from 'react-native-vector-icons/Ionicons';
+//import IconAttach from 'react-native-vector-icons/Ionicons';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+//import {Storage} from '../services/storage';
+import {TouchableOpacity} from 'react-native-gesture-handler';
 //
 // ─── FOR TABBAR SETTINGS AND STYLES ─────────────────────────────────────────────
 //
@@ -21,20 +22,27 @@ const Tab = createBottomTabNavigator<Record<string, object | undefined>>();
 const Stack = createStackNavigator<Record<string, object | undefined>>();
 
 const Left = ({onPress}: any) => (
-    <TouchableHighlight onPress={onPress} style={{paddingLeft: 20}}>
+    <TouchableOpacity
+        onPress={onPress}
+        style={{
+            paddingLeft: 20,
+            height: 40,
+            justifyContent: 'center',
+            alignItems: 'center',
+        }}>
         <Icon
             name={'keyboard-backspace'}
             size={25}
             color={colors.primaryColor}
         />
-    </TouchableHighlight>
+    </TouchableOpacity>
 );
 
-const Attach = ({onPress}: any) => (
-    <TouchableHighlight onPress={onPress} style={{paddingRight: 20}}>
-        <IconAttach name={'attach'} size={30} color={colors.primaryColor} />
-    </TouchableHighlight>
-);
+// const Attach = ({onPress}: any) => (
+//     <TouchableOpacity onPress={onPress} style={{paddingRight: 20}}>
+//         <IconAttach name={'attach'} size={30} color={colors.primaryColor} />
+//     </TouchableOpacity>
+// );
 
 export const StackHome = ({navigation}: any) => {
     return (
@@ -42,10 +50,16 @@ export const StackHome = ({navigation}: any) => {
             screenOptions={{
                 headerBackTitleVisible: false,
                 headerBackImage: () => (
-                    <Left onPress={() => navigation.back()} />
+                    <Left onPress={() => navigation.goBack()} />
                 ),
                 headerTitleAlign: 'left',
-                headerRight: () => <Attach />,
+                // headerRight: () => (
+                //     <Attach
+                //         onPress={() => {
+                //             storage.pickDoc();
+                //         }}
+                //     />
+                // ),
                 animationEnabled: false,
             }}>
             <Stack.Screen

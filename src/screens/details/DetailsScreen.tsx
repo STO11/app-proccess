@@ -19,15 +19,12 @@ import {
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import HistoryComponent from '../../components/historyComponent';
 import Historical from '../../models/Historical';
-//import ActionSheetComponent from '../../components/actionsheetComponent';
 import {getDay, getMonth, getYear, OrderBy} from '../../utils/utils';
-// import {TouchableOpacity} from 'react-native';
-// import {Text} from 'react-native';
-//import {Text} from 'react-native';
-
 import {View} from 'react-native';
 import ActionSheet from 'react-native-actions-sheet';
 import {colors} from '../../styles/colors';
+import {Storage} from '../../services/storage';
+import IconAttach from 'react-native-vector-icons/Ionicons';
 
 //
 // ─── DETAILS SCREEN RENDER ───────────────────────────────────────────────────────
@@ -43,9 +40,12 @@ const detailsScreen: React.FC<Props> = ({Props, route}: any) => {
     const [orderByData, setOrderByData] = useState(true);
     const [orderByDescricao, setOrderByDescricao] = useState(false);
     const [orderByIncresDecres, setOrderByIncresDecres] = useState(true);
+    const [attach, setAttach] = useState('');
+
     // const [orderByDescricaoCrescente, setOrderByDescricaoCrescente] = useState(
     //     false,
     // );
+    const storage = Storage;
 
     let orderBy = new OrderBy();
 
@@ -54,9 +54,15 @@ const detailsScreen: React.FC<Props> = ({Props, route}: any) => {
         setListHistory(item.historicals);
     }, []);
 
-    useEffect(() => {
-        console.log('entrou aqui');
-    }, [history]);
+    const getAttach = async () => {
+        let attach = await storage.getFakeAttach();
+        //console.log(attach);
+        setAttach(attach);
+    };
+
+    // useEffect(() => {
+    //     console.log('entrou aqui');
+    // }, [history]);
 
     const setOrderByDataFn = (check: boolean) => {
         setOrderByData(check);
@@ -189,7 +195,9 @@ const detailsScreen: React.FC<Props> = ({Props, route}: any) => {
             <PaddingBottomArea padding={2} />
             <ItemsListComponent
                 letterSpacing={0}
-                title={'R$ ' + item.amount}
+                title={
+                    item.amount !== undefined ? 'R$ ' + item.amount : 'R$ 0,00'
+                }
                 fontSizeText={15}
                 color={'black'}
                 fontWeight={'300'}
@@ -204,17 +212,36 @@ const detailsScreen: React.FC<Props> = ({Props, route}: any) => {
                 fontWeight={'100'}
             />
             <PaddingBottomArea padding={2} />
-            <ViewAnexo>
-                <ButtonComponent
-                    width={'70%'}
-                    height={'40px'}
-                    fontsize={15}
-                    paddingArea="5px"
-                    children={'NomeDoAnexoMax20Car.pdf'}
-                    onPress={() => null}
+            {attach != '' ? (
+                <>
+                    <ViewAnexo>
+                        <ButtonComponent
+                            width={'70%'}
+                            height={'40px'}
+                            fontsize={15}
+                            paddingArea="5px"
+                            children={attach}
+                            onPress={() => null}
+                        />
+                        <Icon
+                            name={'close'}
+                            size={25}
+                            style={{paddingLeft: 15}}
+                            onPress={() => setAttach('')}
+                        />
+                    </ViewAnexo>
+                </>
+            ) : (
+                <IconAttach
+                    name={'attach'}
+                    size={30}
+                    color={colors.primaryColor}
+                    onPress={async () => {
+                        await storage.pickDoc();
+                        getAttach();
+                    }}
                 />
-                <Icon name={'close'} size={25} style={{paddingLeft: 15}} />
-            </ViewAnexo>
+            )}
             <PaddingBottomArea padding={30} />
             {/* {ActionSheetComponent()} */}
             <ViewHeaderHistory>

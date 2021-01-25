@@ -85,6 +85,7 @@
 		92F26FB38765C6E9416D055E /* Pods-teste.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-teste.debug.xcconfig"; path = "Target Support Files/Pods-teste/Pods-teste.debug.xcconfig"; sourceTree = "<group>"; };
 		96BF4057BB6F4AAF91D5FBCD /* Roboto-Medium.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Medium.ttf"; path = "../assets/fonts/Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		A98396D79247B79CCCD4957C /* Pods-teste-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-teste-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-teste-tvOS/Pods-teste-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		BA9CE7AD25BE3B0900EBABD5 /* teste.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = teste.entitlements; path = teste/teste.entitlements; sourceTree = "<group>"; };
 		C2B48547F5664779850D2015 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Roboto-Regular.ttf"; path = "../assets/fonts/Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		C99DCED6BC2FE3B60D443583 /* Pods-teste-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-teste-tvOS.release.xcconfig"; path = "Target Support Files/Pods-teste-tvOS/Pods-teste-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		CC33C1AE5FDC6B7D3FAEE67E /* Pods-teste-testeTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-teste-testeTests.debug.xcconfig"; path = "Target Support Files/Pods-teste-testeTests/Pods-teste-testeTests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -159,6 +160,7 @@
 		13B07FAE1A68108700A75B9A /* teste */ = {
 			isa = PBXGroup;
 			children = (
+				BA9CE7AD25BE3B0900EBABD5 /* teste.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -795,6 +797,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = teste/teste.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9R7L4B53TU;
 				ENABLE_BITCODE = NO;
@@ -805,7 +808,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suelton.processos;
 				PRODUCT_NAME = teste;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
@@ -819,6 +822,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = teste/teste.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 9R7L4B53TU;
 				INFOPLIST_FILE = teste/Info.plist;
@@ -828,7 +832,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = com.suelton.processos;
 				PRODUCT_NAME = teste;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
