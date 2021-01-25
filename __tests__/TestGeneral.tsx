@@ -3,7 +3,6 @@
  */
 
 import 'react-native';
-import {LoginController} from '../src/controllers/LoginController';
 import {Provider} from '../src/services/provider';
 import {OrderBy} from '../src/utils/utils';
 //import React from 'react';
