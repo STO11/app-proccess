@@ -85,8 +85,6 @@ export module Storage {
                 type: [DocumentPicker.types.images, DocumentPicker.types.pdf],
             });
             fakeAttach(res.name);
-
-            //console.log(window.location.reload());
             // console.log(
             //     res.uri,
             //     res.type, // mime type
