@@ -1,11 +1,8 @@
 # Exemplo Aplicativo de Processos (React Native & Typescript)
 > Aplicativo para consulta de processos judiciais.
 
-[![NPM Version][npm-image]][npm-url]
-[![Build Status][travis-image]][travis-url]
-[![Downloads Stats][npm-downloads]][npm-url]
 
-## Installation
+## Instalação
 
 OS X & Linux:
 
@@ -32,3 +29,6 @@ npx react-native run-android
 ```sh
 npx react-native run-ios
 ```
+## Autenticação no aplicativo
+
+Para logar no app utilize usuário `candidato_mobile@email.com.br`  e senha `123456`
