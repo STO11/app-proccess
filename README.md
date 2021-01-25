@@ -1,7 +1,10 @@
 # Exemplo Aplicativo de Processos (React Native & Typescript)
 > Aplicativo para consulta de processos judiciais.
+
 > Algumas considerações:
+
 > Não foi utilizado nenhum gerenciador de estados, apenas hooks.
+
 > Algumas funcionalidades podem ser a titulo de exemplificação.
 
 
