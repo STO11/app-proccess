@@ -2,7 +2,7 @@
 > Aplicativo para consulta de processos judiciais.
 
 
-![](ios.png)
+![](ios.png) ![](android.jpg)
 
 ## Instalação
 
