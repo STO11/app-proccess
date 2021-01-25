@@ -2,7 +2,7 @@
 > Aplicativo para consulta de processos judiciais.
 
 
-![](ios.png) ![](android.png)
+![](ios.png)
 
 ## Instalação
 
@@ -24,10 +24,12 @@ Setando as variaveis  `API_URL` (Seu endpoint) e `API_TOKEN` (chave no header)
 
 Após isso utilize os comandos para rodar sua aplicação:
 
+Para ANDROID:
 ```sh
 npx react-native run-android
 ```
 
+Para IOS:
 ```sh
 npx react-native run-ios
 ```
