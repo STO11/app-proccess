@@ -16,13 +16,28 @@ git clone https://github.com/STO11/app-proccess.git
 cd app-proccess
 ```
 
+Instale os pacotes do node utilizando:
+
 ```sh
-yarn or npm i
+yarn
+```
+Ou
+```sh
+npm i
+```
+
+> Para IOS/IPHONE utilize
+```sh
+cd ios/
+
+```
+```sh
+pod install
 ```
 
 ## Configurar variaveis de ambiente
 
-Abra e copie o arquivo `.env.example` criando outro arquivo `.env`
+Na raiz do projeto abra e copie o arquivo `.env.example` criando outro arquivo `.env`
 
 Setando as variaveis  `API_URL` (Seu endpoint) e `API_TOKEN` (chave no header)
 
