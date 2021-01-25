@@ -16,6 +16,10 @@ git clone https://github.com/STO11/app-proccess.git
 cd app-proccess
 ```
 
+```sh
+yarn or npm i
+```
+
 ## Configurar variaveis de ambiente
 
 Abra e copie o arquivo `.env.example` criando outro arquivo `.env`
