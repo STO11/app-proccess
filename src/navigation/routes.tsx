@@ -1,7 +1,7 @@
 import detailsScreen from '../screens/details/DetailsScreen';
 import HomeScreen from '../screens/home/HomeScreen';
 import loginScreen from '../screens/login/LoginScreen';
-import profileScreen from '../screens/profile/ProfileScreen';
+import profileScreen from '../screens/Profile/ProfileScreen';
 
 export const Routes = {
     LOGIN: {
