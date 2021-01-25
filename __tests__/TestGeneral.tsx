@@ -16,15 +16,6 @@ it('api request test', async () => {
     expect(response.cases[0].id).toBe('1');
 });
 
-it('login test', async () => {
-    let response = await LoginController.login(
-        'candidato_mobile@email.com.br',
-        '123456',
-        true,
-    );
-    expect(response).toBe(true);
-});
-
 it('Order by data asc list history', async () => {
     const historicals = [
         {
